@@ -3,7 +3,7 @@ name: pipeline
 on: [push, pull_request]
 
 jobs:
-  if: github.event.ref == 'refs/heads/main'
+  # if: github.event.ref == 'refs/heads/main'
   dev:
     uses: balavellingiri/repo1/.github/workflows/template-dev.yaml@main
     with:
