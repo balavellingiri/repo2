@@ -1,0 +1,55 @@
+name: rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        required: true
+        description: this is to select the env
+        type: choice
+        options:
+          - dev
+          - qa
+          - uat
+          - prod
+      release_name:
+        required: true
+        description: this is to set the release name
+        type: string
+
+jobs:
+  rollback-dev:
+    if: github.eventsinputs.env == dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: rollback dev
+        run: | 
+          echo ${{ github.event.inputs.env }}
+          echo ${{ github.event.inputs.release_name }}
+
+  rollback-qa:
+    if: github.eventsinputs.env == qa
+    runs-on: ubuntu-latest
+    steps:
+      - name: rollback dev
+        run: | 
+          echo ${{ github.event.inputs.env }}
+          echo ${{ github.event.inputs.release_name }}
+
+  rollback-uat:
+    if: github.eventsinputs.env == uat
+    runs-on: ubuntu-latest
+    steps:
+      - name: rollback dev
+        run: | 
+          echo ${{ github.event.inputs.env }}
+          echo ${{ github.event.inputs.release_name }}
+
+  rollback-prod:
+    if: github.eventsinputs.env == prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: rollback dev
+        run: | 
+          echo ${{ github.event.inputs.env }}
+          echo ${{ github.event.inputs.release_name }}
