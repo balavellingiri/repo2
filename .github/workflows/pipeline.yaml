@@ -1,0 +1,20 @@
+name: pipeline
+
+on: [push, pull_request]
+
+jobs:
+  if: github.event.ref == 'refs/heads/main'
+  dev:
+    uses: balavellingiri/repo1/.github/workflows/template-dev.yaml@main
+    with:
+      var1: "hello-dev"
+      var2: "world-dev"
+
+  qa:
+    if: github.event.ref != 'refs/heads/main'
+    uses: balavellingiri/repo1/.github/workflows/template-qa.yaml@main
+    with:
+      var1: "hello-qa"
+      var2: "world-qa"
+
+#github.ref_type == 'tag'
