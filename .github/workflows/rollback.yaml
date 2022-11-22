@@ -17,9 +17,12 @@ on:
         description: this is to set the release name
         type: string
 
+env:
+  APP_ENV: ${{ inputs.env }}
+
 jobs:
   rollback-dev:
-    if: github.event.inputs.env == dev
+    if: ${{ env.APP_ENV }} == "dev"
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -28,7 +31,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-qa:
-    if: github.event.inputs.env == qa
+    if: ${{ env.APP_ENV }} == "qa"
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -37,7 +40,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-uat:
-    if: github.event.inputs.env == uat
+    if: ${{ env.APP_ENV }} == uat
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -46,7 +49,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-prod:
-    if: github.event.inputs.env == prod
+    if: ${{ env.APP_ENV }} == prod
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
