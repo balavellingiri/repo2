@@ -22,7 +22,7 @@ env:
 
 jobs:
   rollback-dev:
-    if: ${{ env.APP_ENV }} == "dev"
+    if: ${{ env.APP_ENV == 'dev' }}
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -31,7 +31,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-qa:
-    if: ${{ env.APP_ENV }} == "qa"
+    if: ${{ env.APP_ENV == 'qa' }} 
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -40,7 +40,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-uat:
-    if: ${{ env.APP_ENV }} == uat
+    if: ${{ env.APP_ENV == 'uat' }} 
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
@@ -49,7 +49,7 @@ jobs:
           echo ${{ github.event.inputs.release_name }}
 
   rollback-prod:
-    if: ${{ env.APP_ENV }} == prod
+    if: ${{ env.APP_ENV == 'prod' }} 
     runs-on: ubuntu-latest
     steps:
       - name: rollback dev
